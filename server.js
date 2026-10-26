@@ -161,166 +161,27 @@ async function fetchJsonRpcBatch(url, requests) {
 // ============================================================
 const BASE_RPC = {
     btc: [
-        // Esplora / Mempool / Blockbook (fast, same format)
         {t:'esplora',u:'https://mempool.space/api/address/'},
-        {t:'esplora',u:'https://mempool.emzy.de/api/address/'},
-        {t:'esplora',u:'https://mempool.fmt.cash/api/address/'},
-        {t:'esplora',u:'https://mempool.ninja/api/address/'},
-        {t:'esplora',u:'https://mempool.btc.petertodd.org/api/address/'},
-        {t:'esplora',u:'https://mempool.bitcoin.pt/api/address/'},
-        {t:'esplora',u:'https://mempool.nostr.zone/api/address/'},
-        {t:'esplora',u:'https://mempool.donatebtc.io/api/address/'},
-        {t:'esplora',u:'https://blockstream.info/api/address/'},
-        // Trezor Blockbook
-        {t:'esplora',u:'https://btc1.trezor.io/api/address/'},
-        {t:'esplora',u:'https://btc2.trezor.io/api/address/'},
-        {t:'esplora',u:'https://btc3.trezor.io/api/address/'},
-        // Blockchain.info
-        {t:'blockchain_info',u:'https://blockchain.info/balance?active='},
-        {t:'blockchain_multi',u:'https://blockchain.info/multiaddr?active='},
-        // BlockCypher
-        {t:'blockcypher',u:'https://api.blockcypher.com/v1/btc/main/addrs/'},
-        // Chain.so
-        {t:'chainso',u:'https://chain.so/api/v3/get_address_balance/BTC/'},
-        {t:'chainso_v2',u:'https://chain.so/api/v2/get_address_balance/BTC/'},
-        // Bitaps
-        {t:'bitaps',u:'https://api.bitaps.com/btc/v1/blockchain/address/'},
-        // Blockchair
-        {t:'blockchair',u:'https://api.blockchair.com/bitcoin/dashboards/address/'},
-        // Smartbit
-        {t:'smartbit',u:'https://api.smartbit.com.au/v1/blockchain/address/'},
-        // Tokenview
-        {t:'tokenview',u:'https://services.tokenview.io/vipapi/coin/btc/address/balance/'},
-        // BTC.com
-        {t:'btccom',u:'https://chain.api.btc.com/v3/address/'},
-        // More mempool mirrors
-        {t:'esplora',u:'https://mempool.space/api/address/'},
-        {t:'esplora',u:'https://mempool.emzy.de/api/address/'},
         {t:'esplora',u:'https://blockstream.info/api/address/'},
         {t:'esplora',u:'https://btc1.trezor.io/api/address/'}
     ],
     eth: [
-        // 30+ unique public RPCs
-        {t:'evm',u:'https://rpc.ankr.com/eth'},
-        {t:'evm',u:'https://ethereum.publicnode.com'},
-        {t:'evm',u:'https://cloudflare-eth.com'},
-        {t:'evm',u:'https://eth.llamarpc.com'},
-        {t:'evm',u:'https://eth-mainnet.public.blastapi.io'},
-        {t:'evm',u:'https://1rpc.io/eth'},
-        {t:'evm',u:'https://ethereum.blockpi.network/v1/rpc/public'},
-        {t:'evm',u:'https://gateway.tenderly.co/public/ethereum'},
-        {t:'evm',u:'https://rpc.mevblocker.io'},
-        {t:'evm',u:'https://eth.drpc.org'},
-        {t:'evm',u:'https://ethereumnodelight.app.runonflux.io'},
-        {t:'evm',u:'https://rpc.flashbots.net'},
-        {t:'evm',u:'https://mainnet.eth.cloud.ava.do'},
-        {t:'evm',u:'https://eth.gateway.pm'},
-        {t:'evm',u:'https://rpc.ethereal.engineering'},
-        {t:'evm',u:'https://eth.archivelabs.org'},
-        {t:'evm',u:'https://eth.rencode.io'},
-        {t:'evm',u:'https://api.mycryptoapi.com/eth'},
-        {t:'evm',u:'https://nodes.mewapi.io/rpc/eth'},
-        {t:'evm',u:'https://rpc.scaffoldeth.io'},
-        {t:'evm',u:'https://eth-mainnet.rpc.blxrbdn.com'},
-        {t:'evm',u:'https://eth-mainnet.nodereal.io/v1/35deee6b1b2e4fb0b2ec74f9'},
-        {t:'evm',u:'https://eth-mainnet.gateway.pokt.network/v1/5f345397d19a2a60073471b7'},
-        {t:'evm',u:'https://rpc.ankr.com/eth'},
-        {t:'evm',u:'https://ethereum.publicnode.com'},
-        {t:'evm',u:'https://cloudflare-eth.com'},
-        {t:'evm',u:'https://eth.llamarpc.com'},
-        {t:'evm',u:'https://1rpc.io/eth'},
-        {t:'evm',u:'https://eth.drpc.org'}
+        {t:'evm_batch',u:'https://cloudflare-eth.com'},
+        {t:'evm_batch',u:'https://rpc.ankr.com/eth'},
+        {t:'evm_batch',u:'https://ethereum.publicnode.com'}
     ],
     bnb: [
-        // BSC public RPCs
-        {t:'evm',u:'https://bsc-dataseed.binance.org'},
-        {t:'evm',u:'https://bsc-dataseed1.defibit.io'},
-        {t:'evm',u:'https://bsc-dataseed2.ninicoin.io'},
-        {t:'evm',u:'https://bsc-dataseed3.defibit.io'},
-        {t:'evm',u:'https://bsc-dataseed4.defibit.io'},
-        {t:'evm',u:'https://bsc-dataseed1.binance.org'},
-        {t:'evm',u:'https://bsc-dataseed2.binance.org'},
-        {t:'evm',u:'https://bsc-dataseed3.binance.org'},
-        {t:'evm',u:'https://bsc-dataseed4.binance.org'},
-        {t:'evm',u:'https://rpc.ankr.com/bsc'},
-        {t:'evm',u:'https://bsc.publicnode.com'},
-        {t:'evm',u:'https://bsc-mainnet.public.blastapi.io'},
-        {t:'evm',u:'https://bsc-rpc.publicnode.com'},
-        {t:'evm',u:'https://binance.llamarpc.com'},
-        {t:'evm',u:'https://bsc-mainnet.nodereal.io/v1/d7b1239279e34217b3d3645e'},
-        {t:'evm',u:'https://bsc-dataseed.binance.org'},
-        {t:'evm',u:'https://bsc-dataseed1.defibit.io'},
-        {t:'evm',u:'https://bsc-dataseed2.ninicoin.io'},
-        {t:'evm',u:'https://bsc-dataseed3.defibit.io'},
-        {t:'evm',u:'https://bsc-dataseed4.defibit.io'},
-        {t:'evm',u:'https://rpc.ankr.com/bsc'},
-        {t:'evm',u:'https://bsc.publicnode.com'},
-        {t:'evm',u:'https://binance.llamarpc.com'},
-        {t:'evm',u:'https://bsc-dataseed1.binance.org'},
-        {t:'evm',u:'https://bsc-dataseed2.binance.org'},
-        {t:'evm',u:'https://bsc-dataseed3.binance.org'},
-        {t:'evm',u:'https://bsc-dataseed4.binance.org'},
-        {t:'evm',u:'https://rpc.ankr.com/bsc'},
-        {t:'evm',u:'https://bsc.publicnode.com'}
+        {t:'evm_batch',u:'https://bsc-dataseed.binance.org'},
+        {t:'evm_batch',u:'https://rpc.ankr.com/bsc'},
+        {t:'evm_batch',u:'https://bsc.publicnode.com'}
     ],
     trx: [
-        // TronGrid + Tronscan + TronView + Tokenview
         {t:'trongrid',u:'https://api.trongrid.io/v1/accounts/'},
-        {t:'trongrid_nile',u:'https://nile.trongrid.io/v1/accounts/'},
-        {t:'tronscan',u:'https://apilist.tronscanapi.com/api/accountv2?address='},
-        {t:'tronscan_org',u:'https://apilist.tronscan.org/api/accountv2?address='},
-        {t:'tronview',u:'https://api.tronview.io/account?address='},
-        {t:'tokenview',u:'https://services.tokenview.io/vipapi/coin/trx/address/balance/'},
-        {t:'trongrid',u:'https://api.trongrid.io/v1/accounts/'},
-        {t:'trongrid_nile',u:'https://nile.trongrid.io/v1/accounts/'},
-        {t:'tronscan',u:'https://apilist.tronscanapi.com/api/accountv2?address='},
-        {t:'tronscan_org',u:'https://apilist.tronscan.org/api/accountv2?address='},
-        {t:'tronview',u:'https://api.tronview.io/account?address='},
-        {t:'tokenview',u:'https://services.tokenview.io/vipapi/coin/trx/address/balance/'},
-        {t:'trongrid',u:'https://api.trongrid.io/v1/accounts/'},
-        {t:'trongrid_nile',u:'https://nile.trongrid.io/v1/accounts/'},
-        {t:'tronscan',u:'https://apilist.tronscanapi.com/api/accountv2?address='},
-        {t:'tronscan_org',u:'https://apilist.tronscan.org/api/accountv2?address='},
-        {t:'tronview',u:'https://api.tronview.io/account?address='},
-        {t:'tokenview',u:'https://services.tokenview.io/vipapi/coin/trx/address/balance/'},
-        {t:'trongrid',u:'https://api.trongrid.io/v1/accounts/'},
-        {t:'trongrid_nile',u:'https://nile.trongrid.io/v1/accounts/'},
-        {t:'tronscan',u:'https://apilist.tronscanapi.com/api/accountv2?address='},
-        {t:'tronscan_org',u:'https://apilist.tronscan.org/api/accountv2?address='},
-        {t:'tronview',u:'https://api.tronview.io/account?address='},
-        {t:'tokenview',u:'https://services.tokenview.io/vipapi/coin/trx/address/balance/'},
-        {t:'trongrid',u:'https://api.trongrid.io/v1/accounts/'},
-        {t:'trongrid_nile',u:'https://nile.trongrid.io/v1/accounts/'},
         {t:'tronscan',u:'https://apilist.tronscanapi.com/api/accountv2?address='}
     ],
     ltc: [
-        // Litecoinspace / Blockbook / BlockCypher / Chain.so / Bitaps / Blockchair
         {t:'litecoinspace',u:'https://litecoinspace.org/api/address/'},
-        {t:'litecoinspace',u:'https://ltc1.trezor.io/api/address/'},
-        {t:'blockcypher',u:'https://api.blockcypher.com/v1/ltc/main/addrs/'},
-        {t:'chainso',u:'https://chain.so/api/v3/get_address_balance/LTC/'},
-        {t:'chainso_v2',u:'https://chain.so/api/v2/get_address_balance/LTC/'},
-        {t:'blockchair',u:'https://api.blockchair.com/litecoin/dashboards/address/'},
-        {t:'bitaps',u:'https://api.bitaps.com/ltc/v1/blockchain/address/'},
-        {t:'litecoinspace',u:'https://litecoinspace.org/api/address/'},
-        {t:'litecoinspace',u:'https://ltc1.trezor.io/api/address/'},
-        {t:'blockcypher',u:'https://api.blockcypher.com/v1/ltc/main/addrs/'},
-        {t:'chainso',u:'https://chain.so/api/v3/get_address_balance/LTC/'},
-        {t:'chainso_v2',u:'https://chain.so/api/v2/get_address_balance/LTC/'},
-        {t:'blockchair',u:'https://api.blockchair.com/litecoin/dashboards/address/'},
-        {t:'bitaps',u:'https://api.bitaps.com/ltc/v1/blockchain/address/'},
-        {t:'litecoinspace',u:'https://litecoinspace.org/api/address/'},
-        {t:'litecoinspace',u:'https://ltc1.trezor.io/api/address/'},
-        {t:'blockcypher',u:'https://api.blockcypher.com/v1/ltc/main/addrs/'},
-        {t:'chainso',u:'https://chain.so/api/v3/get_address_balance/LTC/'},
-        {t:'chainso_v2',u:'https://chain.so/api/v2/get_address_balance/LTC/'},
-        {t:'blockchair',u:'https://api.blockchair.com/litecoin/dashboards/address/'},
-        {t:'bitaps',u:'https://api.bitaps.com/ltc/v1/blockchain/address/'},
-        {t:'litecoinspace',u:'https://litecoinspace.org/api/address/'},
-        {t:'litecoinspace',u:'https://ltc1.trezor.io/api/address/'},
-        {t:'blockcypher',u:'https://api.blockcypher.com/v1/ltc/main/addrs/'},
-        {t:'chainso',u:'https://chain.so/api/v3/get_address_balance/LTC/'},
-        {t:'chainso_v2',u:'https://chain.so/api/v2/get_address_balance/LTC/'}
+        {t:'blockcypher',u:'https://api.blockcypher.com/v1/ltc/main/addrs/'}
     ]
 };
 
