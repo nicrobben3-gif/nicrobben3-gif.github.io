@@ -517,5 +517,8 @@ server.listen(PORT, function() {
     io.emit('log', {msg:'<span style="color:#22c55e">DASH removed | 150+ APIs per coin | 3 Workers parallel</span>'});
     io.emit('log', {msg:'<span style="color:#22d3ee">IP Rotation: ' + (PROXIES.length ? 'ACTIVE ('+PROXIES.length+' proxies)' : 'Add proxies to PROXIES[] array') + '</span>'});
     io.emit('log', {msg:''});
-    worker(1); worker(2); worker(3);
+    const WORKER_COUNT = 10;
+
+for (let id = 1; id <= WORKER_COUNT; id++) {
+    worker(id);
 });
